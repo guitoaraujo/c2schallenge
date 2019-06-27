@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @input.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @input.phone %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @input.message %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @input.vehicle %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @input.price %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @input.link %>
+</p>
+
+<p>
+  <strong>Vehicle brand:</strong>
+  <%= @input.vehicle_brand %>
+</p>
+
+<p>
+  <strong>Vehicle model:</strong>
+  <%= @input.vehicle_model %>
+</p>
+
+<p>
+  <strong>Km:</strong>
+  <%= @input.km %>
+</p>
+
+<p>
+  <strong>Accessories:</strong>
+  <%= @input.accessories %>
+</p>
+
+<%= link_to 'Edit', edit_input_path(@input) %> |
+<%= link_to 'Back', inputs_path %>

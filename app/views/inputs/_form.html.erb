@@ -1,0 +1,67 @@
+<%= form_with(model: input, local: true) do |form| %>
+  <% if input.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(input.errors.count, "error") %> prohibited this input from being saved:</h2>
+
+      <ul>
+      <% input.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message %>
+    <%= form.text_area :message %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle %>
+    <%= form.text_field :vehicle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle_brand %>
+    <%= form.text_field :vehicle_brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle_model %>
+    <%= form.text_field :vehicle_model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :km %>
+    <%= form.text_field :km %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accessories %>
+    <%= form.text_area :accessories %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

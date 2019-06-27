@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inputs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Message</th>
+      <th>Vehicle</th>
+      <th>Price</th>
+      <th>Link</th>
+      <th>Vehicle brand</th>
+      <th>Vehicle model</th>
+      <th>Km</th>
+      <th>Accessories</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inputs.each do |input| %>
+      <tr>
+        <td><%= input.name %></td>
+        <td><%= input.phone %></td>
+        <td><%= input.message %></td>
+        <td><%= input.vehicle %></td>
+        <td><%= input.price %></td>
+        <td><%= input.link %></td>
+        <td><%= input.vehicle_brand %></td>
+        <td><%= input.vehicle_model %></td>
+        <td><%= input.km %></td>
+        <td><%= input.accessories %></td>
+        <td><%= link_to 'Show', input %></td>
+        <td><%= link_to 'Edit', edit_input_path(input) %></td>
+        <td><%= link_to 'Destroy', input, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Input', new_input_path %>
