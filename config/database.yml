@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: c2s_challenge_production
-  username: c2s_challenge
-  password: <%= ENV['C2S_CHALLENGE_DATABASE_PASSWORD'] %>
+    database: myapp_production
+    username: myapp
+    password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
