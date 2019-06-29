@@ -9,27 +9,29 @@ class InputsController < ApplicationController
   end
 
   def new
-    @input = Input.new
   end
 
   def edit
   end
 
   def create
-    binding.pry
-
-    mail = Mail.read(params[:file])
-    # @input = Input.new(input_params)
-    #
-    # respond_to do |format|
-    #   if @input.save
-    #     format.html { redirect_to @input, notice: 'Input was successfully created.' }
-    #     format.json { render :show, status: :created, location: @input }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @input.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if !params[:file].blank? && params[:file].content_type == "message/rfc822"
+        mail      = Mail.read(params[:file].tempfile)
+        cells     = Inputs::HandleInput.call(mail).response
+        # infos     = Inputs::GetInfos.call(cells).response
+        Input.create(
+          name:     cells[:nome_do_interessado],
+          phone:    cells[:telefone_do_interessado],
+          message:  cells[:mensagem],
+          vehicle:  cells[:veículo],
+          link:     cells[:link_do_veículo]
+        )
+        format.html { redirect_to inputs_path, notice: 'Input was successfully created.' }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
@@ -57,7 +59,6 @@ class InputsController < ApplicationController
     def set_input
       @input = Input.find(params[:id])
     end
-
 
     def input_params
       params.require(:input).permit(:name, :phone, :message, :vehicle, :price, :link, :vehicle_brand, :vehicle_model, :km, :accessories)
